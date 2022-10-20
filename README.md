@@ -1,2 +1,4 @@
-# Sleep-Cycle-Calculator
-This terminal-based app is designed to help people sleep with proper cycle for a better new day.
+# Sleep-Cycle-Calculator: A handful tool for better sleep quality
+
+## Introduction:
+    This app aims to help people who are experiencing fatigue or powerless when they first wake up in the morning. By sleep with cycles, it will provide you a better sleep quality and also enough energy for a whole new day.
