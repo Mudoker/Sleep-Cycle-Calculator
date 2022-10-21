@@ -89,9 +89,9 @@ void intro (void) {
                    .-'`  _/                                                                ||                                _-Powered by Quoc Doan-_  ||
                .-'`    _/                                                                  \\__________________________________________________________//  
             .-'       /                                                                     Program's Menu:
-         .-'         /                                                                      1. Type '1': I want to wake up at................................................................
-       .'           (                                                                       2. Type '2': I will sleep at.....................................................................
-     .'       ,,////)                                                                       3. Type '3': Sleep now...........................................................................
+         .-'         /                                                                      1. Type '1': I want to wake up at......................................................
+       .'           (                                                                       2. Type '2': I will sleep at...........................................................
+     .'       ,,////)                                                                       3. Type '3': Sleep now.................................................................
     .         __,-^/                                                                        4. Type 'exit' to exit the program.....................................................
    .           \()(                                                                         5. Type 'info' to see the program information..........................................
    :               \                                                                        
@@ -116,13 +116,16 @@ void time_input() {
     while (true) {
         cout << "Enter hour (between 0 - 24): ";
         cin >> current_time[0]; 
+        // stoi will throw an exception if failed
         try {
             int tmp = stoi (current_time[0]);
         }
+        // catch the throw and continue to loop
         catch (...) {
             cout << "Invalid Input!" << endl;
             continue;
         }
+        // no throw caught -> stoi success -> break the loop
         break;
     }
 
@@ -150,7 +153,7 @@ void time_input() {
 
     // check for valid value
     int minute = stoi (current_time[1]);
-    while (minute < 0 || minute > 24) {
+    while (minute < 0 || minute > 59) {
         cout << "Minute should be in between 0-59!" << endl;
         cin >> current_time[1]; 
         minute = stoi (current_time[1]);
@@ -234,7 +237,7 @@ void sleep_now() {
         print_time(i,tmp);
     }
     // Notes
-    cout << "Please keep in mind that you should be waking up at these times. The average human takes fourteen minutes to wake up, so plan accordingly! - SLEEPOPOLIS" << endl;
+    cout << "'Please keep in mind that you should be waking up at these times. The average human takes fourteen minutes to wake up, so plan accordingly!' - SLEEPOPOLIS" << endl;
 }
 
 
@@ -251,8 +254,7 @@ void sleep_at() {
     if (stoi(current_time[1]) < 10) {
         current_time[1] = "0" + current_time[1];
     }
-    cout << "By Sleeping at " << current_time[0] << ":" << current_time[1] << endl;
-    cout << ", you should wake up at.... \n";
+    cout << "By Sleeping at " << current_time[0] << ":" << current_time[1] << ", you should wake up at.... \n";
 
     for (int i = 0; i < 6; i++) {
         // still wake up at this time
@@ -262,7 +264,7 @@ void sleep_at() {
         }
         print_time(i,tmp);
     }
-    cout << "Please keep in mind that you should be waking up at these times. The average human takes fourteen minutes to wake up, so plan accordingly! - SLEEPOPOLIS" << endl;
+    cout << "'Please keep in mind that you should be waking up at these times. The average human takes fourteen minutes to wake up, so plan accordingly!' - SLEEPOPOLIS" << endl;
 }
 
 void wake_up() {
@@ -288,7 +290,7 @@ void wake_up() {
         }
         print_time(i,tmp);
     }
-    cout << "Please keep in mind that you should be waking up at these times. The average human takes fourteen minutes to wake up, so plan accordingly! - SLEEPOPOLIS" << endl;
+    cout << "'Please keep in mind that you should be waking up at these times. The average human takes fourteen minutes to wake up, so plan accordingly!' - SLEEPOPOLIS" << endl;
 
 }
 
