@@ -76,7 +76,7 @@ int main ()
         // invalid command
         else {
             cout << "Invalid command! Try again. \n";
-            cout << ">>";
+            cout << ">> ";
             cin >> command;
         }
     }
@@ -119,22 +119,18 @@ void time_input() {
         // stoi will throw an exception if failed
         try {
             int tmp = stoi (current_time[0]);
+            while (tmp < 0 || tmp > 24) {
+                cout << "Hour should be in between 0-24!: ";
+                cin >> current_time[0]; 
+                tmp = stoi (current_time[0]);
+            }
+            break;
         }
         // catch the throw and continue to loop
         catch (...) {
             cout << "Invalid Input!" << endl;
             continue;
         }
-        // no throw caught -> stoi success -> break the loop
-        break;
-    }
-
-    // check for valid hour value
-    int hour = stoi (current_time[0]);
-    while (hour < 0 || hour > 24) {
-        cout << "Hour should be in between 0-24!" << endl;
-        cin >> current_time[0]; 
-        hour = stoi (current_time[0]);
     }
 
     // Check for valid datatype
@@ -143,21 +139,20 @@ void time_input() {
         cin >> current_time[1]; 
         try {
             int tmp = stoi (current_time[1]);
+            while (tmp < 0 || tmp > 59) {
+                cout << "Minute should be in between 0-59: ";
+                cin >> current_time[1]; 
+                tmp = stoi (current_time[1]);
+            }
+            break;
         }
         catch (...) {
             cout << "Invalid Input!" << endl;
             continue;
         }
-        break;
     }
 
-    // check for valid value
-    int minute = stoi (current_time[1]);
-    while (minute < 0 || minute > 59) {
-        cout << "Minute should be in between 0-59!" << endl;
-        cin >> current_time[1]; 
-        minute = stoi (current_time[1]);
-    }
+    
 }
 
 void time (void) {
